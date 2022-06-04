@@ -34,6 +34,12 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.timeZone')).toHaveLength(1);
   });
 
+  test('renders text correctly', () => {
+    expect(EventWrapper.find('.summary').text('.summary')).toBe(
+      'Learn JavaScript'
+    );
+  });
+
   /*Button Tests*/
 
   test('render show details button', () => {
