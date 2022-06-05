@@ -16,11 +16,15 @@ class Event extends Component {
     const { collapsed } = this.state;
     return (
       <div className="event">
-        <p className="summary">{event.summary}</p>
-        <p className="description">{event.description}</p>
-        <p className="location">{event.location}</p>
-        <p className="dateTime">{event.start.dateTime}</p>
-        <p className="timeZone">{event.start.timeZone}</p>
+        <h2 className="summary">{event.summary}</h2>
+        <p className="start-date">
+          {event.start.dateTime} ({event.start.timeZone})
+        </p>
+
+        <p className="location">
+          @{event.summary} | {event.location}
+        </p>
+
         <button
           variant="outline-info"
           className={`details-button ${collapsed ? 'show' : 'hide'}-details`}
@@ -28,6 +32,17 @@ class Event extends Component {
         >
           {collapsed ? 'Show Details' : 'Hide Details'}
         </button>
+
+        {!collapsed && (
+          <div
+            className={'extra-details'}
+            //{this.state.collapsed ? 'hide' : 'show'
+            //}-description`
+          >
+            <h3>Details:</h3>
+            <p className="description">{event.description}</p>
+          </div>
+        )}
       </div>
     );
   }

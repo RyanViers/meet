@@ -6,7 +6,7 @@ class NumberOfEvents extends Component {
     numberCheck: '',
   };
 
-  handleSubmit = (event) => {
+  handleInput = (event) => {
     const value = event.target.value;
     if (value < 1 || value > 32) {
       this.setState({
@@ -23,20 +23,13 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div className="numberOfEvents">
-        <form>
-          <label className="eventLabel">Number of Events:</label>
-          <input
-            type="number"
-            className="inputNumberOfEvents"
-            value={this.state.numberOfEvents}
-          />
-          <input
-            type="submit"
-            className="submit"
-            value="Submit"
-            onClick={this.handleSubmit}
-          />
-        </form>
+        <label className="eventLabel">Number of Events:</label>
+        <input
+          type="number"
+          className="numberOfEvents__input"
+          onChange={this.handleInput}
+          value={this.state.numberOfEvents}
+        />
       </div>
     );
   }
