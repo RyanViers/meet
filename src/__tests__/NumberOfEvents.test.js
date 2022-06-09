@@ -6,7 +6,7 @@ describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
 
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
   });
 
   test('number of events is 32 by default', () => {
@@ -22,22 +22,26 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('render user input text box', () => {
-    expect(NumberOfEventsWrapper.find('.inputNumberOfEvents')).toHaveLength(1);
+    expect(NumberOfEventsWrapper.find('.numberOfEvents__input')).toHaveLength(
+      1
+    );
   });
 
-  test('render submit input button', () => {
-    expect(NumberOfEventsWrapper.find('.submit')).toHaveLength(1);
-  });
-
-  test('change state with submit button when input is validated', () => {
-    const eventObject = { target: { value: 15 } };
-    NumberOfEventsWrapper.find('.submit').simulate('click', eventObject);
+  test('change state when input is validated', () => {
+    NumberOfEventsWrapper.find('.numberOfEvents__input').simulate('change', {
+      target: { value: 15 },
+    });
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(15);
   });
 
   test('test for invalid input', () => {
     const eventObject = { target: { value: 45 } };
-    NumberOfEventsWrapper.find('.submit').simulate('click', eventObject);
-    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe('');
+    NumberOfEventsWrapper.find('.numberOfEvents__input').simulate(
+      'change',
+      eventObject
+    );
+    expect(NumberOfEventsWrapper.state('numberCheck')).toBe(
+      'You must enter number between 1 and 32.'
+    );
   });
 });
