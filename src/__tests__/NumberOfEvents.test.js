@@ -6,7 +6,7 @@ describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
 
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
   });
 
   test('number of events is 32 by default', () => {
@@ -27,7 +27,7 @@ describe('<NumberOfEvents /> component', () => {
     );
   });
 
-  test('change state with submit button when input is validated', () => {
+  test('change state when input is validated', () => {
     NumberOfEventsWrapper.find('.numberOfEvents__input').simulate('change', {
       target: { value: 15 },
     });

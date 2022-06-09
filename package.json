@@ -40,7 +40,8 @@
       "!src/index.js",
       "!src/reportWebVitals.js",
       "!src/service-worker.js",
-      "!src/serviceWorkerRegistration.js"
+      "!src/serviceWorkerRegistration.js",
+      "!src/api.js"
     ]
   },
   "eslintConfig": {
