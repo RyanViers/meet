@@ -4,6 +4,10 @@
   padding: 2% 5%;
 }
 
+html {
+  background-color: orange;
+}
+
 .App * {
   box-sizing: border-box;
 }
@@ -34,6 +38,7 @@ input[type='number'] {
   line-height: 20px;
   align-self: center;
   height: 38px;
+  border: 5px solid black;
 }
 
 .city {
@@ -83,6 +88,8 @@ input[type='number'] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: lightblue;
+  border: 5px solid black;
 }
 
 .details-btn {
