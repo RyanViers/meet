@@ -32,16 +32,6 @@ describe('<Event /> component', () => {
     );
   });
 
-  /*test('render description element', () => {
-    EventWrapper.setState({ collapsed: false });
-    expect(EventWrapper.find('.show-description')).toHaveLength(1);
-  });
-
-  test('hide description element', () => {
-    EventWrapper.setState({ collapsed: true });
-    expect(EventWrapper.find('.hide-description')).toHaveLength(1);
-  });*/
-
   test('render description', () => {
     EventWrapper.setState({ collapsed: false });
     expect(EventWrapper.find('.description')).toHaveLength(1);
@@ -50,7 +40,7 @@ describe('<Event /> component', () => {
   /*Button Tests*/
 
   test('render show details button', () => {
-    expect(EventWrapper.find('.details-button')).toHaveLength(1);
+    expect(EventWrapper.find('.details-btn')).toHaveLength(1);
   });
 
   test('details are collapsed by default', () => {
