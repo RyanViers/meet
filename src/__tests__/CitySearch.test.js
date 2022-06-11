@@ -61,6 +61,17 @@ describe('<CitySearch /> component', () => {
     expect(CitySearchWrapper.state('suggestions')).toEqual(filteredLocations);
   });
 
+  test('when invalid input is entered, a warning is thrown', () => {
+    CitySearchWrapper.setState({
+      query: '',
+    });
+    const eventObject = { target: { value: 'xxx' } };
+    CitySearchWrapper.find('.city').simulate('change', eventObject);
+    expect(CitySearchWrapper.state('infoText')).toBe(
+      'We can not find the city you are looking for. Please try another city.'
+    );
+  });
+
   test('selecting a suggestion should change query state', () => {
     CitySearchWrapper.setState({
       query: 'Berlin',
