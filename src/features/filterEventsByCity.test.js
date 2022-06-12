@@ -46,7 +46,7 @@ defineFeature(feature, (test) => {
     });
 
     then(
-      'the user should receive a list of cities (suggestions) that match what they’ve typed',
+      'the user should receive a list of cities (suggestions) that match what they have typed',
       () => {
         expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(2);
       }
