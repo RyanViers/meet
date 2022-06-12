@@ -1,5 +1,3 @@
-import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers';
-import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 import React, { Component } from 'react';
 
 class Alert extends Component {
