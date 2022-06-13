@@ -28,7 +28,6 @@ class CitySearch extends Component {
         infoText: '',
       });
     }
-    //this.setState({ query: value, suggestions });
   };
 
   handleItemClicked = (suggestion) => {
@@ -45,9 +44,11 @@ class CitySearch extends Component {
       <div className="CitySearch">
         <InfoAlert text={this.state.infoText} />
 
+        <label for="city">City:</label>
         <input
           type="text"
           className="city"
+          id="city"
           value={this.state.query}
           onChange={this.handleInputChanged}
           onFocus={() => {
