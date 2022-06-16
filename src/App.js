@@ -24,7 +24,7 @@ class App extends Component {
         locations: extractLocations(events),
       });
     });
-    if (!window.navigator.onLine) {
+    /*if (!window.navigator.onLine) {
       this.setState({
         OfflineAlertText: 'You are offline',
       });
@@ -32,7 +32,7 @@ class App extends Component {
       this.setState({
         OfflineAlertText: '',
       });
-    }
+    }*/
   }
 
   componentWillUnmount() {
