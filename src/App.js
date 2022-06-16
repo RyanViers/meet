@@ -36,13 +36,20 @@ class App extends Component {
     }
   }
 
+  componentWillUpdate() {
+    if (navigator.onLine) {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: 'You are offline',
+      });
+    }
+  }
+
   componentWillUnmount() {
     this.mounted = false;
-    if (navigator.onLine) {
-      this.setState({ OfflineAlertText: '' });
-    } else {
-      this.setState({ OfflineAlertText: 'You are offline.' });
-    }
   }
 
   updateEvents = (location, eventCount) => {
@@ -67,18 +74,6 @@ class App extends Component {
       });
     });
   };
-
-  /*componentWillUpdate() {
-    if (!window.navigator.onLine) {
-      this.setState({
-        OfflineAlertText: 'You are offline',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    }
-  }*/
 
   render() {
     const { OfflineAlertText } = this.state;
