@@ -24,28 +24,10 @@ class App extends Component {
         locations: extractLocations(events),
       });
     });
-    if (!window.navigator.onLine) {
-      this.setState({
-        OfflineAlertText: 'You are offline',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    }
   }
 
   componentWillUnmount() {
     this.mounted = false;
-    if (!window.navigator.onLine) {
-      this.setState({
-        OfflineAlertText: 'You are offline',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    }
   }
 
   updateEvents = (location, eventCount) => {
@@ -85,6 +67,15 @@ class App extends Component {
 
   render() {
     const { OfflineAlertText } = this.state;
+    if (!window.navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are offline',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    }
     return (
       <div className="App">
         <OfflineAlert text={OfflineAlertText} />
