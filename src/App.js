@@ -3,6 +3,7 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import { OfflineAlert } from './Alert';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
 
@@ -23,6 +24,15 @@ class App extends Component {
         locations: extractLocations(events),
       });
     });
+    if (!window.navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are offline',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -55,6 +65,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <OfflineAlert text={this.state.OfflineAlertText} />
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
