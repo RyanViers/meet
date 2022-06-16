@@ -37,6 +37,15 @@ class App extends Component {
 
   componentWillUnmount() {
     this.mounted = false;
+    if (!window.navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are offline',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    }
   }
 
   updateEvents = (location, eventCount) => {
