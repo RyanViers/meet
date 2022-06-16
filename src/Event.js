@@ -27,18 +27,14 @@ class Event extends Component {
 
         <button
           variant="outline-info"
-          className={`details-button ${collapsed ? 'show' : 'hide'}-details`}
+          className={`details-btn ${collapsed ? 'show' : 'hide'}-details`}
           onClick={this.handleClick}
         >
           {collapsed ? 'Show Details' : 'Hide Details'}
         </button>
 
         {!collapsed && (
-          <div
-            className={'extra-details'}
-            //{this.state.collapsed ? 'hide' : 'show'
-            //}-description`
-          >
+          <div className={`event__Details`}>
             <h3>Details:</h3>
             <p className="description">{event.description}</p>
           </div>
