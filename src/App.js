@@ -62,7 +62,7 @@ class App extends Component {
     });
   };
 
-  componentWillUpdate() {
+  /*componentWillUpdate() {
     if (!window.navigator.onLine) {
       this.setState({
         OfflineAlertText: 'You are offline',
@@ -72,7 +72,7 @@ class App extends Component {
         OfflineAlertText: '',
       });
     }
-  }
+  }*/
 
   render() {
     const { OfflineAlertText } = this.state;
