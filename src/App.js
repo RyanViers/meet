@@ -62,17 +62,29 @@ class App extends Component {
     });
   };
 
+  componentDidUpdate() {
+    if (!window.navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are offline',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    }
+  }
+
   render() {
     const { OfflineAlertText } = this.state;
     return (
       <div className="App">
+        <OfflineAlert text={OfflineAlertText} />
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
-        <OfflineAlert text={OfflineAlertText} />
       </div>
     );
   }
