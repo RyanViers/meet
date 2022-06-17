@@ -36,6 +36,18 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate() {
+    if (navigator.onLine) {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: 'You are offline.',
+      });
+    }
+  }
+
   componentWillUnmount() {
     this.mounted = false;
   }
