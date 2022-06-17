@@ -13,6 +13,7 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     locationSelected: 'all',
+    OfflineAlertText: '',
   };
 
   async componentDidMount() {
@@ -64,7 +65,7 @@ class App extends Component {
   };
 
   render() {
-    const { OfflineAlertText } = this.state;
+    //const { OfflineAlertText } = this.state;
 
     return (
       <div className="App">
