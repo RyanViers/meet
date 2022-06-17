@@ -106,7 +106,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer height={400}>
           <ScatterChart margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="category" dataKey="city" name="city" />
