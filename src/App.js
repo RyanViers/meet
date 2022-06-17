@@ -14,7 +14,6 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     locationSelected: 'all',
-    OfflineAlertText: '',
     showWelcomeScreen: undefined,
   };
 
@@ -23,28 +22,17 @@ class App extends Component {
     const accessToken = localStorage.getItem('access_token');
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
-
     const code = searchParams.get('code');
+
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          let eventsNumber = this.state.numberOfEvents;
           this.setState({
-            events: events.slice(0, eventsNumber),
+            events: events.slice(0, this.state.numberOfEvents),
             locations: extractLocations(events),
           });
         }
-      });
-    }
-
-    if (navigator.onLine) {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: 'You are offline.',
       });
     }
   }
@@ -98,12 +86,21 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.showWelcomeScreen === undefined)
+    if (this.state.showWelcomeScreen === undefined) {
       return <div className="App" />;
+    }
 
     return (
       <div className="App">
-        <OfflineAlert text={this.state.OfflineAlertText} />
+        <div className="offline-warning">
+          {!navigator.onLine ? (
+            <OfflineAlert
+              text={'You are offline, event data might not be up to date.'}
+            />
+          ) : (
+            ''
+          )}
+        </div>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
