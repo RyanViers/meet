@@ -3,8 +3,9 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import WelcomeScreen from './WelcomeScreen';
 import { OfflineAlert } from './Alert';
-import { extractLocations, getEvents } from './api';
+import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 
 class App extends Component {
@@ -14,9 +15,37 @@ class App extends Component {
     numberOfEvents: 32,
     locationSelected: 'all',
     OfflineAlertText: '',
+    showWelcomeScreen: undefined,
   };
 
   async componentDidMount() {
+    this.mounted = true;
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+
+    const code = searchParams.get('code');
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
+
+    if (navigator.onLine) {
+      this.setState({
+        OfflineAlertText: '',
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: 'You are offline.',
+      });
+    }
+  }
+
+  /*async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       let eventsNumber = this.state.numberOfEvents;
@@ -35,7 +64,7 @@ class App extends Component {
         OfflineAlertText: 'You are offline.',
       });
     }
-  }
+  }*/
 
   componentWillUnmount() {
     this.mounted = false;
@@ -65,7 +94,8 @@ class App extends Component {
   };
 
   render() {
-    //const { OfflineAlertText } = this.state;
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
 
     return (
       <div className="App">
@@ -76,6 +106,12 @@ class App extends Component {
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
       </div>
     );
   }
