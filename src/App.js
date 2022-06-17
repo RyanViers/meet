@@ -6,6 +6,14 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { OfflineAlert } from './Alert';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
 import './nprogress.css';
 
 class App extends Component {
@@ -37,30 +45,21 @@ class App extends Component {
     }
   }
 
-  /*async componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      let eventsNumber = this.state.numberOfEvents;
-      this.setState({
-        events: events.slice(0, eventsNumber),
-        locations: extractLocations(events),
-      });
-    });
-
-    if (navigator.onLine) {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: 'You are offline.',
-      });
-    }
-  }*/
-
   componentWillUnmount() {
     this.mounted = false;
   }
+
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(', ').shift();
+      return { city, number };
+    });
+    return data;
+  };
 
   updateEvents = (location, eventCount) => {
     if (eventCount === undefined) {
@@ -106,6 +105,22 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <NumberOfEvents updateEvents={this.updateEvents} />
+        <ScatterChart
+          width={400}
+          height={400}
+          margin={{
+            top: 20,
+            right: 20,
+            bottom: 20,
+            left: 20,
+          }}
+        >
+          <CartesianGrid />
+          <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+          <YAxis type="number" dataKey="y" name="weight" unit="kg" />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter name="A school" data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
