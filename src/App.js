@@ -69,7 +69,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <OfflineAlert text={OfflineAlertText} />
+        <OfflineAlert text={this.state.OfflineAlertText} />
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
