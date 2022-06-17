@@ -15,7 +15,7 @@ class App extends Component {
     locationSelected: 'all',
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       let eventsNumber = this.state.numberOfEvents;
@@ -25,18 +25,6 @@ class App extends Component {
       });
     });
 
-    if (navigator.onLine) {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: 'You are offline.',
-      });
-    }
-  }
-
-  componentDidUpdate() {
     if (navigator.onLine) {
       this.setState({
         OfflineAlertText: '',
