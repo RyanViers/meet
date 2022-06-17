@@ -175,7 +175,7 @@ input[type='number'] {
   margin: 1rem;
 }
 
-.google-btn {
+/*.google-btn {
   width: 184px;
   height: 42px;
   margin: 1rem;
@@ -212,7 +212,7 @@ input[type='number'] {
   font-size: 14px;
   letter-spacing: 0.2px;
   font-family: 'Roboto';
-}
+}*/
 
 @media only screen and (min-width: 992px) {
   .data-vis-wrapper {
