@@ -102,11 +102,14 @@ class App extends Component {
             ''
           )}
         </div>
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
+        <div className="input-boxes">
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents updateEvents={this.updateEvents} />
+        </div>
+
         <div className="data-vis-wrapper">
           <EventGenre events={this.state.events} />
           <ResponsiveContainer height={400}>
