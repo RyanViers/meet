@@ -16,16 +16,17 @@
 
 .WelcomeScreen-content {
   background-color: grey;
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 15px;
+  border: 5px solid black;
 }
 
 .login-button {
-  color: #494949;
+  color: lightgrey;
   text-transform: uppercase;
   text-decoration: none;
   background: #ffffff;
@@ -81,4 +82,10 @@
   width: 80%;
   height: 100%;
   text-align: center;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.btn-text:hover {
+  background-color: #1669f2;
 }
