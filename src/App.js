@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import meet_header_logo from './images/meet_header_logo.png';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -93,6 +94,17 @@ class App extends Component {
 
     return (
       <div className="App">
+        <div className="header">
+          <img
+            src={meet_header_logo}
+            className="meet-logo responsive"
+            alt="meet-logo"
+          ></img>
+        </div>
+        <div className="welcome-message">
+          <p>Web Development!</p>
+          <p>Find web development events near you.</p>
+        </div>
         <div className="offline-warning">
           {!navigator.onLine ? (
             <OfflineAlert
