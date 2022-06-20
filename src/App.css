@@ -3,6 +3,7 @@
   box-sizing: border-box;
   text-align: center;
   margin: 0;
+  height: 100%;
 }
 
 .App * {
@@ -42,6 +43,7 @@ input[type='number'] {
   border: 2px solid black;
   background-color: lightblue;
   margin: auto;
+  margin-bottom: 20px;
   width: 90%;
 }
 .city {
@@ -84,6 +86,17 @@ input[type='number'] {
 
 .suggestions > li:hover {
   background-color: #bcdcdb;
+}
+
+.EventList {
+  display: grid;
+  list-style: none;
+  grid-template-columns: 1fr;
+  margin: auto;
+  padding: 20px;
+  justify-content: space-evenly;
+  grid-gap: 20px;
+  width: 90%;
 }
 
 .event {
@@ -150,6 +163,21 @@ input[type='number'] {
   top: 0px;
 }
 
+.data-vis-container {
+  border: 2px dashed black;
+  margin: auto;
+  width: 90%;
+  background-color: lightblue;
+  padding-bottom: 20px;
+}
+.data-vis-title {
+  text-align: center;
+  color: black;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
 .data-vis-wrapper {
   display: flex;
 
@@ -181,7 +209,18 @@ input[type='number'] {
   margin: 1rem;
 }
 
+@media only screen and (min-width: 483px) and (max-width: 724px) {
+  .EventList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media only screen and (min-width: 992px) {
+  .EventList {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
   .data-vis-wrapper {
     flex-direction: row;
   }
