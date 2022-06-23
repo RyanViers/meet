@@ -1,15 +1,44 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 .App {
+  box-sizing: border-box;
   text-align: center;
-  padding: 2% 5%;
-}
-
-html {
-  background-color: pink;
+  margin: 0;
+  height: 100%;
 }
 
 .App * {
   box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  background: rgb(32, 64, 81);
+  background: linear-gradient(
+    to right,
+    #3b6978 0%,
+    #204051,
+    #204051,
+    #204051,
+    #3b6978
+  );
+}
+.meet-logo {
+  display: block;
+  margin: auto;
+  height: 100%;
+  width: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: #204051;
+}
+
+.welcome-message {
+  color: #204051;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: #204051;
 }
 
 ul {
@@ -41,9 +70,22 @@ input[type='number'] {
   border: 5px solid black;
 }
 
-/*.errorAlert {
-  position: none;
-  top: none;
+.input-boxes {
+  padding-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*.input-boxes {
+  border: 2px solid black;
+  background-color: lightblue;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 90%;
 }*/
 
 .city {
@@ -53,10 +95,10 @@ input[type='number'] {
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
+  flex-basis: 200px;
   max-width: 300px;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 0px;
   position: relative;
 }
 
@@ -88,8 +130,20 @@ input[type='number'] {
   background-color: #bcdcdb;
 }
 
+.EventList {
+  display: grid;
+  list-style: none;
+  grid-template-columns: 1fr;
+  margin: auto;
+  padding: 20px;
+  justify-content: space-evenly;
+  grid-gap: 20px;
+  width: 90%;
+}
+
 .event {
   padding: 10px 10px 35px;
+  margin: auto;
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
@@ -97,6 +151,7 @@ input[type='number'] {
   position: relative;
   background-color: lightblue;
   border: 5px solid black;
+  width: 90%;
 }
 
 .details-btn {
@@ -131,9 +186,10 @@ input[type='number'] {
 
 .numberOfEvents {
   width: 200px;
-  margin: 0;
+  margin-bottom: 30px;
   margin-top: 0px;
   text-align: center;
+  position: sticky;
 }
 
 .button-wrapper {
@@ -149,18 +205,38 @@ input[type='number'] {
   top: 0px;
 }
 
+.data-vis-container {
+  border: 2px dashed black;
+  margin: auto;
+  width: 90%;
+  background-color: lightblue;
+  padding-bottom: 20px;
+}
+.data-vis-title {
+  text-align: center;
+  color: black;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
 .data-vis-wrapper {
   display: flex;
-  align-items: center;
+
   flex-direction: column;
+  margin: auto;
+  width: 90%;
+  background-color: white;
 }
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;
+  margin: auto;
+  overflow: auto;
 }
-.recharts-surface {
-  overflow: visible;
-}
+/*.recharts-surface {
+  overflow: auto;
+}*/
 
 .login-button {
   color: #494949;
@@ -175,46 +251,18 @@ input[type='number'] {
   margin: 1rem;
 }
 
-/*.google-btn {
-  width: 184px;
-  height: 42px;
-  margin: 1rem;
-  background-color: #4285f4;
-  border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+@media only screen and (min-width: 483px) and (max-width: 724px) {
+  .EventList {
+    grid-template-columns: 1fr 1fr;
+  }
 }
-.google-btn:hover {
-  box-shadow: 0 0 6px #4285f4;
-}
-.google-btn:active {
-  background: #1669f2;
-}
-.google-icon-wrapper {
-  position: absolute;
-  margin-top: 1px;
-  margin-left: 1px;
-  width: 40px;
-  height: 40px;
-  border-radius: 2px;
-  background-color: #fff;
-}
-.google-icon {
-  position: absolute;
-  margin-top: 11px;
-  margin-left: -8px;
-  width: 18px;
-  height: 18px;
-}
-.btn-text {
-  float: right;
-  margin: 11px 11px 0 0;
-  color: #fff;
-  font-size: 14px;
-  letter-spacing: 0.2px;
-  font-family: 'Roboto';
-}*/
 
 @media only screen and (min-width: 992px) {
+  .EventList {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+
   .data-vis-wrapper {
     flex-direction: row;
   }

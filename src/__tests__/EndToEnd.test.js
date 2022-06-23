@@ -52,7 +52,7 @@ describe('filter events by city', () => {
 
   test('show events from all cities if user has not searched for one', async () => {
     const eventCount = await page.$$eval('.event', (e) => e.length);
-    expect(eventCount).toBe(2);
+    expect(eventCount).toBe(3);
   });
 
   test('show list of suggestions when user searches for a city', async () => {

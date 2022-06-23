@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+import meet_header_logo from './images/meet_header_logo.png';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
+import EventGenre from './EventGenre';
 import { OfflineAlert } from './Alert';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 import './nprogress.css';
 
 class App extends Component {
@@ -37,30 +48,21 @@ class App extends Component {
     }
   }
 
-  /*async componentDidMount() {
-    this.mounted = true;
-    getEvents().then((events) => {
-      let eventsNumber = this.state.numberOfEvents;
-      this.setState({
-        events: events.slice(0, eventsNumber),
-        locations: extractLocations(events),
-      });
-    });
-
-    if (navigator.onLine) {
-      this.setState({
-        OfflineAlertText: '',
-      });
-    } else {
-      this.setState({
-        OfflineAlertText: 'You are offline.',
-      });
-    }
-  }*/
-
   componentWillUnmount() {
     this.mounted = false;
   }
+
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(', ').shift();
+      return { city, number };
+    });
+    return data;
+  };
 
   updateEvents = (location, eventCount) => {
     if (eventCount === undefined) {
@@ -92,6 +94,17 @@ class App extends Component {
 
     return (
       <div className="App">
+        <div className="header">
+          <img
+            src={meet_header_logo}
+            className="meet-logo responsive"
+            alt="meet-logo"
+          ></img>
+        </div>
+        <div className="welcome-message">
+          <p>Web Development!</p>
+          <p>Find web development events near you.</p>
+        </div>
         <div className="offline-warning">
           {!navigator.onLine ? (
             <OfflineAlert
@@ -101,11 +114,36 @@ class App extends Component {
             ''
           )}
         </div>
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents updateEvents={this.updateEvents} />
+        <div className="input-boxes">
+          <CitySearch
+            locations={this.state.locations}
+            updateEvents={this.updateEvents}
+          />
+          <NumberOfEvents updateEvents={this.updateEvents} />
+        </div>
+        <div className="data-vis-container">
+          <h2 className="data-vis-title">Events In Each City</h2>
+          <div className="data-vis-wrapper">
+            <EventGenre events={this.state.events} />
+            <ResponsiveContainer height={400}>
+              <ScatterChart
+                margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="category" dataKey="city" name="City" />
+                <YAxis
+                  type="number"
+                  dataKey="number"
+                  name="Number of Events"
+                  allowDecimals={false}
+                />
+                <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+                <Scatter data={this.getData()} fill="#8884d8" />
+              </ScatterChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
         <EventList events={this.state.events} />
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
