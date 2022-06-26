@@ -1,9 +1,11 @@
 import React from 'react';
 import './WelcomeScreen.css';
+import logo_meet_Auth from './images/logo_meet_Auth.png';
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
     <div className="WelcomeScreen">
       <div className="WelcomeScreen-content">
+        <img src={logo_meet_Auth} alt="logo" />
         <h1>Meet App</h1>
         <h4>
           The Meet App is a simple app that allows you to find coding events in
