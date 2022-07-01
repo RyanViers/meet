@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import meet_header_logo from './images/meet_header_logo.png';
+import logo_meet_Auth from './images/logo_meet_Auth.png';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -96,12 +97,30 @@ class App extends Component {
       <div className="App">
         <div className="header">
           <img
-            src={meet_header_logo}
+            src={logo_meet_Auth}
             className="meet-logo responsive"
             alt="meet-logo"
           ></img>
         </div>
         <div className="welcome-message">
+          <p>Meet App</p>
+          <p>
+            The Meet App is a simple app that allows you to find coding events
+            in major cities around the world. It allows your to search by city
+            and select number of events you would like to see. It also includes
+            charts to provide you with visual data on the app.
+            <br></br>
+            <br></br>
+            No personal data is collected or saved at any stage and the calendar
+            accessed is not a personal calendar, but one created specifically
+            for the project.
+            <br></br>
+            <br></br>
+            The Meet App uses sensitive scopes from Google Calendar API to allow
+            access to a calendar specifically for the project. This app adheres
+            to the Google API Services User Data Policy, including the Limited
+            Use requirements.
+          </p>
           <p>Web Development!</p>
           <p>Find web development events near you.</p>
         </div>
