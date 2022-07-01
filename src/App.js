@@ -103,8 +103,8 @@ class App extends Component {
           ></img>
         </div>
         <div className="welcome-message">
-          <p>Meet App</p>
-          <p>
+          <h1>Meet App</h1>
+          <h4>
             The Meet App is a simple app that allows you to find coding events
             in major cities around the world. It allows your to search by city
             and select number of events you would like to see. It also includes
@@ -120,9 +120,7 @@ class App extends Component {
             access to a calendar specifically for the project. This app adheres
             to the Google API Services User Data Policy, including the Limited
             Use requirements.
-          </p>
-          <p>Web Development!</p>
-          <p>Find web development events near you.</p>
+          </h4>
         </div>
         <div className="offline-warning">
           {!navigator.onLine ? (
