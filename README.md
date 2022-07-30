@@ -24,6 +24,17 @@ by charts.
 -   Recharts
 -   gh-pages
 
+## Requirements
+
+- React application
+- Built using TDD technique
+- Use the Google Calendar API and OAuth2 authentication flow.
+- Use use serverless functions (AWS lambda is preferred) for the authorization server instead of using a traditional server
+- Work offline or in slow network conditions with the help of a service worker.
+- Use React axios and async/await.
+- Implement an alert system using an OOP approach to show information to the user.
+- Make use of data visualization using the recharts library.
+
 ## FEATURES
 
 #### FEATURE 1: FILTER EVENTS BY CITY
