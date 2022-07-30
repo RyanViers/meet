@@ -4,7 +4,10 @@
 ##  DESCRIPTION
 
 **Meet** is a serverless, progressive web application (PWA) built with React using a
-test-driven development (TDD) technique. 
+test-driven development (TDD) technique. The app uses the Google Calendar API for information
+about meet up events for web developers in cities around the world.  Users can filter events by
+location, expand details to see more information about events, and view events information displayed
+by charts.
 
 ## Tech-stack
 
