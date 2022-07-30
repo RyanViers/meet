@@ -3,8 +3,23 @@
 
 ##  DESCRIPTION
 
-**meet** is a serverless, progressive web application (PWA) built with React using a
+**Meet** is a serverless, progressive web application (PWA) built with React using a
 test-driven development (TDD) technique. 
+
+## Tech-stack
+
+-   React
+-   Jest
+-   Enzyme
+-   jest-cucumber
+-   Puppeteer
+-   Serverless
+-   Googleapis
+-   Axios
+-   Atatus
+-   nprogress
+-   Recharts
+-   gh-pages
 
 ## FEATURES
 
